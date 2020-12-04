@@ -1,6 +1,15 @@
 from tree_node import TreeNode
 
+
 def in_order_traversal(root=None):
+
+  if root is None:
+    return []
+
+  
+  left_tree = in_order_traversal(root.left)
+  right_tree = in_order_traversal(root.right)
+
   """
   1. Define in_order_traversal function.
   2. If the root is null, return an empty list.
@@ -9,6 +18,7 @@ def in_order_traversal(root=None):
   5. Return the left list values concatenated with the root value, concatenated
      with the right list values.
   """
+  return left_tree + [root.value] + right_tree
 
 def post_order_traversal(root=None):
   """
@@ -19,6 +29,14 @@ def post_order_traversal(root=None):
   5. Return the left list values concatenated with the right list values,
       concatenated with the root value.
   """
+
+  if root is None:
+    return []
+
+  left_tree = post_order_traversal(root.left)
+  right_tree = post_order_traversal(root.right)
+
+  return left_tree + right_tree + [root.value]
 
 root = TreeNode('a')
 b = TreeNode('b')
